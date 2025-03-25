@@ -62,7 +62,7 @@ resource "google_pubsub_topic_iam_member" "managed_topic_access" {
 locals {
   // Map of topic name to schema path
   managed_topic_config = {
-    "test-topic" = "schemas/test.avro"
+    "test-topic" = "schemas/test-topic.avsc"
   }
 
   CONSUMER_ROLE = "roles/pubsub.subscriber"
