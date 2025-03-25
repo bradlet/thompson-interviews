@@ -23,4 +23,5 @@ with it seamlessly using personal or professional credentials.
  for the changes to propagate.
 
  # Cleanup reminder
- Remember to delete bootstrap resources after any given interview is completed.
+ Remember to apply bootstrap resources without the interviewee supplied as an argumetn
+ after any given interview is completed to cleanup their access configuration.

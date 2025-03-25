@@ -83,3 +83,19 @@ resource "google_project_iam_member" "interviewee_iam_write_access" {
   role    = google_project_iam_custom_role.iam_write_access_role.name
   member  = format("user:%s", each.value)
 }
+
+// Create a single "pre-existing" topic for the interviewee to implement the
+// stretch goal of integrating with existing resources
+resource "google_pubsub_schema" "pre-existing" {
+  name = "pre-existing-topic-schema"
+  type = "AVRO"
+  definition = file("${path.root}/../interview/schemas/pre-existing-topic.avsc")
+}
+resource "google_pubsub_topic" "pre-existing" {
+  name = "pre-existing-topic"
+
+  schema_settings {
+    schema = google_pubsub_schema.pre-existing.id
+    encoding = "JSON"
+  }
+}
