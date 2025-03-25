@@ -17,12 +17,9 @@ if ! echo "$JSON_PAYLOAD" | jq empty 2>/dev/null; then
   exit 1
 fi
 
-# Base64 encode the JSON message
-ENCODED_MESSAGE=$(echo -n "$JSON_PAYLOAD" | base64)
-
 # Publish to the topic
 echo "Publishing to topic '$TOPIC_NAME' with message: $JSON_PAYLOAD"
 gcloud pubsub topics publish "$TOPIC_NAME" \
-  --message="$ENCODED_MESSAGE"
+  --message="$JSON_PAYLOAD"
 
 echo "Message published ✅"
