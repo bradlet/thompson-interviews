@@ -28,7 +28,7 @@ resource "google_pubsub_schema" "managed" {
 // Create the topic resource itself
 resource "google_pubsub_topic" "managed" {
   for_each = local.managed_topic_config
-  name = format("%s-topic", each.key)
+  name = each.key
 
   # Also acceptable but less ideal when implicit dependences are possible
   # depends_on = [google_pubsub_schema.example]
@@ -37,6 +37,15 @@ resource "google_pubsub_topic" "managed" {
     # schema = format("projects/%s/schemas/%s", var.project_id, each.key)
     encoding = "JSON"
   }
+}
+
+// Create a subscription for each topic -- allow us to test msg ingestion
+resource "google_pubsub_subscription" "managed" {
+  for_each = local.managed_topic_config
+  name = format("%s-sub", each.key)
+  topic = google_pubsub_topic.managed[each.key].id
+  message_retention_duration = "600s" // 10 minutes
+  ack_deadline_seconds = 10
 }
 
 // Provide IAM access for each member expected to access each topic
