@@ -44,3 +44,33 @@ resource "google_project_iam_member" "interviewee_pubsub_access" {
   role    = "roles/pubsub.editor"
   member  = format("user:%s", each.value)
 }
+
+resource "google_project_iam_member" "interviewee_viewer" {
+  for_each = var.interviewees
+
+  project = var.project_id
+  role    = "roles/viewer"
+  member  = format("user:%s", each.value)
+}
+
+// Need to explicitly grant ability to form IAM binding, but don't want to give delete access
+resource "google_project_iam_custom_role" "iam_write_access_role" {
+  role_id = "WriteOnlyIAMAccess"
+  title   = "Write Only IAM Access"
+  permissions = [
+    "resourcemanager.projects.createPolicyBinding",
+    "resourcemanager.projects.get",
+    "resourcemanager.projects.getIamPolicy",
+    "resourcemanager.projects.searchPolicyBindings",
+    "resourcemanager.projects.setIamPolicy",
+    "resourcemanager.projects.updatePolicyBinding"
+  ]
+}
+
+resource "google_project_iam_member" "interviewee_iam_write_access" {
+  for_each = var.interviewees
+
+  project = var.project_id
+  role    = google_project_iam_custom_role.iam_write_access_role.name
+  member  = format("user:%s", each.value)
+}
