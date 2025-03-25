@@ -18,4 +18,6 @@ with it seamlessly using personal or professional credentials.
 
 1. Add an email that they have associated with a Google account to `variables.tf`
  in the default list input of `interviewees`.
-2. 
+    - Or, supply a '*.auto.tfvars' file with the list containing the expected interviewee.
+2. Apply bootstrap module to create IAM bindings for their access -- allow 1-2 mins
+ for the changes to propagate.

@@ -13,5 +13,5 @@ variable "location" {
 variable "pubsub_accessors" {
   description = "The list of members to be granted limited access to the pubsub topics"
   type        = set(string)
-  default     = ["user:mail@bradlet.com"]
+  default     = []
 }
