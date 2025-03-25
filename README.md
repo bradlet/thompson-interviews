@@ -39,5 +39,5 @@ a solution to the technical problem.
 needed to satisify the product requirement.
 - `/scripts` -- Provide scripts which act as a 'unit test' to determine the functionality of the infrastructure
  provisioned.
-    - If you can successfully run the script to interact with a pubsub topic provisioned, you've met the
+    - If you can successfully run the scripts to interact with a pubsub topic provisioned, you've met the
     product requirement and completed the technical problem.

@@ -21,3 +21,6 @@ with it seamlessly using personal or professional credentials.
     - Or, supply a '*.auto.tfvars' file with the list containing the expected interviewee.
 2. Apply bootstrap module to create IAM bindings for their access -- allow 1-2 mins
  for the changes to propagate.
+
+ # Cleanup reminder
+ Remember to delete bootstrap resources after any given interview is completed.
