@@ -63,7 +63,16 @@ resource "google_project_iam_custom_role" "iam_write_access_role" {
     "resourcemanager.projects.getIamPolicy",
     "resourcemanager.projects.searchPolicyBindings",
     "resourcemanager.projects.setIamPolicy",
-    "resourcemanager.projects.updatePolicyBinding"
+    "resourcemanager.projects.updatePolicyBinding",
+    // Specific pubub topic IAM policy access:
+    "pubsub.topics.getIamPolicy",
+    "pubsub.topics.setIamPolicy",
+    "pubsub.subscriptions.getIamPolicy",
+    "pubsub.subscriptions.setIamPolicy",
+    "pubsub.schemas.getIamPolicy",
+    "pubsub.schemas.setIamPolicy",
+    "pubsub.snapshots.getIamPolicy",
+    "pubsub.snapshots.setIamPolicy",
   ]
 }
 
