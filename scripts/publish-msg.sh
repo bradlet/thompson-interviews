@@ -4,13 +4,13 @@ set -e
 
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 <topic-name> '<json-payload>' [project-id]"
-  # Example: ./publish_avro.sh test-topic '{"id": "123"}'
+  # Example: ./publish-msg.sh test-topic '{"id": "123"}'
   exit 1
 fi
 
 TOPIC_NAME="$1"
 JSON_PAYLOAD="$2"
-PROJECT_ID=${3:-thompson-interviews}
+PROJECT_ID=${3:-thompson-interviews-480021}
 
 # Validate that payload is valid JSON
 if ! echo "$JSON_PAYLOAD" | jq empty 2>/dev/null; then

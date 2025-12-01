@@ -4,12 +4,12 @@ set -e
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <subscription-name> [project-id]"
-  # Example: ./consume-msg.sh test-subscription
+  # Example: ./pull-msgs.sh test-subscription
   exit 1
 fi
 
 SUBSCRIPTION_NAME="$1"
-PROJECT_ID=${2:-thompson-interviews}
+PROJECT_ID=${2:-thompson-interviews-480021}
 
 echo "Pulling messages from subscription '$SUBSCRIPTION_NAME'..."
 

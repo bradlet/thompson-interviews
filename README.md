@@ -1,5 +1,5 @@
 # thompson-interviews
-Contains resources for interviewing with a focus on infrastructure. Pairs with my `thompson-interviews` gcp project.
+Contains resources for interviewing with a focus on infrastructure. Pairs with my `thompson-interviews-480021` gcp project.
 
 # Instructions
 
@@ -11,7 +11,7 @@ Contains resources for interviewing with a focus on infrastructure. Pairs with m
 3. Authenticate w/ your account for your application default credentials (ADC)
 > gcloud auth application-default login
 4. (Optional; If you want to use other bits of the gcloud CLI that you have IAM permissions to use):
-> gcloud config set project thompson-interviews
+> gcloud config set project thompson-interviews-480021
 
 ## Action Items
 These are the only two things expected of you ahead of the interview.
